@@ -9,9 +9,22 @@ public class ObjectList{
     public void AddObject(GameObject gameObject,int occupiedSpot){
         objectsAndOccupiedSpots.Add(gameObject, occupiedSpot);
     }
-    public bool isSpotOccupied(int x, int y){
-            return objectsAndOccupiedSpots.ContainsValue(screen.GetCorrespondingINum(x,y));
+public GameObject isSpotOccupied(int x, int y)
+{
+    int correspondingINum = screen.GetCorrespondingINum(x, y);
+
+    if (objectsAndOccupiedSpots.ContainsValue(correspondingINum))
+    {
+        GameObject occupyingObject = objectsAndOccupiedSpots
+            .FirstOrDefault(z => z.Value == correspondingINum).Key;
+
+        return (occupyingObject);
     }
+    else
+    {
+        return (null);
+    }
+}
     public void ChangeObject(GameObject gameObject, int newSpot){
         if(objectsAndOccupiedSpots.ContainsKey(gameObject)){
             objectsAndOccupiedSpots[gameObject] = newSpot;

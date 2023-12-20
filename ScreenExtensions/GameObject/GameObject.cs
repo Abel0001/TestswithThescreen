@@ -1,26 +1,30 @@
 
 
+using System.Dynamic;
+
 public class GameObject{
 
-    ObjectList objectList;
+    protected ObjectList objectList;
 
-    public bool willCollide = false;
-
-    int[] position = new int[2];
-    Screen screen;
-    string NameId{get;}
-    int lockedListPosition;
-    int State{
+    protected bool willCollide = false;
+    protected bool isPushable = true;
+    public bool canPush{get;}
+    public int[] position = new int[2];
+    protected Screen screen;
+    protected string NameId{get; set;}
+    protected int lockedListPosition;
+    protected int State{
         get; set;
     }
-    public bool exists = false;
-    public GameObject(string name, Screen occupiedScreen, int stateId, ObjectList list, bool canCollide){
+    protected bool exists = false;
+    public GameObject(string name, Screen occupiedScreen, int stateId, ObjectList list, bool canCollide, bool ableToPush){
         NameId = name;
         screen = occupiedScreen;
         State = stateId;
         exists = false;
         objectList = list;
         willCollide = canCollide;
+        canPush = ableToPush;
     }
 
     public void Summon(int x, int y){
@@ -46,7 +50,24 @@ public class GameObject{
     }
 
     public void Move(int x, int y){
-        if(willCollide && objectList.isSpotOccupied(position[0] + x,position[1] + y)) return; 
+       
+    {
+        GameObject occupiedSpot = objectList.isSpotOccupied(position[0] + x, position[1] + y);
+
+        if (occupiedSpot != null)
+        {
+            if (occupiedSpot.isPushable && canPush)
+           {
+                occupiedSpot.Push();
+                Console.WriteLine("Object pushed");
+           }
+           else
+           {
+                Console.WriteLine("Spot occupied");
+               return;
+           }
+        }  
+    
         if(!isValidPosition(position[0] + x, position[1] + y)) return;
         position[0] += x;
         position[1] += y;
@@ -55,11 +76,13 @@ public class GameObject{
         screen.ChangeCharacter(position[0],position[1], State);
         screen.ClearScreen();
         screen.RenderScreen();
+            Console.WriteLine("Object moved");
     }
-
+    }
     public void Move(int[] coords){
-        if(willCollide && objectList.isSpotOccupied(coords[0] + position[0], coords[1] + position[1])) return; 
-
+      //  if(willCollide && objectList.isSpotOccupied(coords[0] + position[0], coords[1] + position[1])) {
+      //      if(objectList.isSpotOccupied(position[0] + coords[0],position[1] + coords[1]).Item2.isPushable) objectList.isSpotOccupied(position[0] + coords[0],position[1] + coords[1]).Item2.Push();
+      //  }else return; 
         if(!isValidPosition(coords[0] + position[0], coords[1] + position[1])) return;
         position[0] += coords[0];
         position[1] += coords[1];
@@ -72,5 +95,7 @@ public class GameObject{
 
 
 
-
+    public virtual void Push(){
+        
+    }
 }
