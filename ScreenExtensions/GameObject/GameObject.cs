@@ -59,7 +59,8 @@ public class GameObject{
         {
             if (occupiedSpot.isPushable && canPush)
            {
-                occupiedSpot.Push(this);
+                bool pushStatus = occupiedSpot.Push(this);
+                if(pushStatus == false) return;
                 Console.WriteLine("Object pushed");
            }
            else
@@ -98,10 +99,13 @@ public class GameObject{
 
 
 
-public void Push(GameObject gameObject){
-        if(gameObject.canPush){
-            int[] direction = new int[] {gameObject.position[0] - this.position[0], gameObject.position[1] - this.position[1]};
+public bool Push(GameObject gameObject){
+                int[] direction = new int[] {gameObject.position[0] - this.position[0], gameObject.position[1] - this.position[1]};
 
+        if( objectList.isSpotOccupied(position[0] - direction[0], position[1] - direction[1]) == null || (objectList.isSpotOccupied(position[0] - direction[0], position[1] - direction[1]).isPushable && this.canPush)){
+            if(this.canPush && objectList.isSpotOccupied(position[0] - direction[0], position[1] - direction[1]) != null && objectList.isSpotOccupied(position[0] - direction[0], position[1] - direction[1]).isPushable){
+                Push(objectList.isSpotOccupied(position[0] - direction[0], position[1] - direction[1]));
+            }
             switch(direction){
                 case [1,0]:
                 Move(-1,0);
@@ -116,6 +120,9 @@ public void Push(GameObject gameObject){
                 Move(0, 1);
                 break;
             }
+            return true;
+        } else {
+            return false;
         }
     }
 }
