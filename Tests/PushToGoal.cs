@@ -1,16 +1,17 @@
 public class PushToGoal
 {   
     static ObjectList objectList = new ObjectList(Program.screen);
-    static GameObject player = new GameObject("Player", Program.screen, 1, objectList, true, true,false);
-    static GameObject box = new GameObject("Box", Program.screen, 1, objectList, true, false,true);
-    static GameObject pushBox = new GameObject("Push", Program.screen, 2, objectList, true, true, true);
+    static Map1 map1 = new Map1(Program.screen, objectList);
+    static GameObject player = new GameObject("Player", Program.screen, 1, objectList, true, true,false,5,5);
+   // static GameObject box = new GameObject("Box", Program.screen, 1, objectList, true, false,true, 7,7);
+   // static GameObject pushBox = new GameObject("Push", Program.screen, 2, objectList, true, true, true,9,9);
 
 
     public static void StartGame(){
-        player.Summon(5,5);
-        
-        box.Summon(7,7);
-        pushBox.Summon(9,9);
+        player.Summon();
+        map1.LoadMap();
+      //  box.Summon();
+     //   pushBox.Summon();
         GameLoop();
     }
 

@@ -17,7 +17,7 @@ public class GameObject{
         get; set;
     }
     protected bool exists = false;
-    public GameObject(string name, Screen occupiedScreen, int stateId, ObjectList list, bool canCollide, bool ableToPush, bool IsPushable){
+    public GameObject(string name, Screen occupiedScreen, int stateId, ObjectList list, bool canCollide, bool ableToPush, bool IsPushable, int summonX, int summonY){
         NameId = name;
         screen = occupiedScreen;
         State = stateId;
@@ -26,16 +26,17 @@ public class GameObject{
         willCollide = canCollide;
         canPush = ableToPush;
         isPushable = IsPushable;
+        position[0] = summonX;
+        position[1] = summonY;
     }
 
-    public void Summon(int x, int y){
+    public void Summon(){
         if(!exists){
-        if(!isValidPosition(x,y)) return;
-        position[0] = x;
-        position[1] = y;
-        screen.LockedList.Add(screen.GetCorrespondingINum(x,y));
+        if(!isValidPosition(position[0],position[1])) return;
+
+        screen.LockedList.Add(screen.GetCorrespondingINum(position[0],position[1]));
         lockedListPosition = screen.LockedList.Count - 1;
-        screen.ChangeCharacter(x,y,State);
+        screen.ChangeCharacter(position[0],position[1],State);
         objectList.AddObject(this, screen.GetCorrespondingINum(position[0],position[1]));
         exists = true;
         }
