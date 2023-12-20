@@ -1,0 +1,15 @@
+E:\Proejcts\C#\TestWithScreen\bin\Debug\net7.0\TestWithScreen.exe
+E:\Proejcts\C#\TestWithScreen\bin\Debug\net7.0\TestWithScreen.deps.json
+E:\Proejcts\C#\TestWithScreen\bin\Debug\net7.0\TestWithScreen.runtimeconfig.json
+E:\Proejcts\C#\TestWithScreen\bin\Debug\net7.0\TestWithScreen.dll
+E:\Proejcts\C#\TestWithScreen\bin\Debug\net7.0\TestWithScreen.pdb
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.csproj.AssemblyReference.cache
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.AssemblyInfoInputs.cache
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.AssemblyInfo.cs
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.csproj.CoreCompileInputs.cache
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.dll
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\refint\TestWithScreen.dll
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.pdb
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.genruntimeconfig.cache
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\ref\TestWithScreen.dll
