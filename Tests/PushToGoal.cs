@@ -1,8 +1,12 @@
 public class PushToGoal
-{
-    static GameObject player = new GameObject("Player", Program.screen, 1);
+{   
+    static ObjectList objectList = new ObjectList(Program.screen);
+    static GameObject player = new GameObject("Player", Program.screen, 1, objectList, true);
+    static GameObject box = new GameObject("Box", Program.screen, 1, objectList, true);
+
     public static void StartGame(){
         player.Summon(5,5);
+        box.Summon(7,7);
         GameLoop();
     }
 
