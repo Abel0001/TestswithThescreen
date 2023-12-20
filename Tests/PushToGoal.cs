@@ -1,9 +1,9 @@
 public class PushToGoal
 {   
     static ObjectList objectList = new ObjectList(Program.screen);
-    static GameObject player = new GameObject("Player", Program.screen, 1, objectList, true, true);
-    static GameObject box = new GameObject("Box", Program.screen, 1, objectList, true, false);
-    static PushableObject pushBox = new PushableObject("Push", Program.screen, 1, objectList, true, false);
+    static GameObject player = new GameObject("Player", Program.screen, 1, objectList, true, true,false);
+    static GameObject box = new GameObject("Box", Program.screen, 1, objectList, true, false,false);
+    static GameObject pushBox = new GameObject("Push", Program.screen, 1, objectList, true, false, true);
 
 
     public static void StartGame(){

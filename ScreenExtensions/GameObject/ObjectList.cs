@@ -18,11 +18,11 @@ public GameObject isSpotOccupied(int x, int y)
         GameObject occupyingObject = objectsAndOccupiedSpots
             .FirstOrDefault(z => z.Value == correspondingINum).Key;
 
-        return (occupyingObject);
+        return occupyingObject;
     }
     else
     {
-        return (null);
+        return null;
     }
 }
     public void ChangeObject(GameObject gameObject, int newSpot){

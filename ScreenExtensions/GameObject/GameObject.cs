@@ -7,7 +7,7 @@ public class GameObject{
     protected ObjectList objectList;
 
     protected bool willCollide = false;
-    protected bool isPushable = true;
+    protected bool isPushable = false;
     public bool canPush{get;}
     public int[] position = new int[2];
     protected Screen screen;
@@ -17,7 +17,7 @@ public class GameObject{
         get; set;
     }
     protected bool exists = false;
-    public GameObject(string name, Screen occupiedScreen, int stateId, ObjectList list, bool canCollide, bool ableToPush){
+    public GameObject(string name, Screen occupiedScreen, int stateId, ObjectList list, bool canCollide, bool ableToPush, bool IsPushable){
         NameId = name;
         screen = occupiedScreen;
         State = stateId;
@@ -25,6 +25,7 @@ public class GameObject{
         objectList = list;
         willCollide = canCollide;
         canPush = ableToPush;
+        isPushable = IsPushable;
     }
 
     public void Summon(int x, int y){
@@ -54,11 +55,11 @@ public class GameObject{
     {
         GameObject occupiedSpot = objectList.isSpotOccupied(position[0] + x, position[1] + y);
 
-        if (occupiedSpot != null)
+        if (occupiedSpot != null && occupiedSpot.willCollide && willCollide)
         {
             if (occupiedSpot.isPushable && canPush)
            {
-                occupiedSpot.Push();
+                occupiedSpot.Push(this);
                 Console.WriteLine("Object pushed");
            }
            else
@@ -79,10 +80,11 @@ public class GameObject{
             Console.WriteLine("Object moved");
     }
     }
+    /*
     public void Move(int[] coords){
-      //  if(willCollide && objectList.isSpotOccupied(coords[0] + position[0], coords[1] + position[1])) {
-      //      if(objectList.isSpotOccupied(position[0] + coords[0],position[1] + coords[1]).Item2.isPushable) objectList.isSpotOccupied(position[0] + coords[0],position[1] + coords[1]).Item2.Push();
-      //  }else return; 
+        if(willCollide && objectList.isSpotOccupied(coords[0] + position[0], coords[1] + position[1])) {
+            if(objectList.isSpotOccupied(position[0] + coords[0],position[1] + coords[1]).Item2.isPushable) objectList.isSpotOccupied(position[0] + coords[0],position[1] + coords[1]).Item2.Push();
+       }else return; 
         if(!isValidPosition(coords[0] + position[0], coords[1] + position[1])) return;
         position[0] += coords[0];
         position[1] += coords[1];
@@ -92,10 +94,28 @@ public class GameObject{
         screen.ClearScreen();
         screen.RenderScreen();
     }
+    */
 
 
 
-    public virtual void Push(){
-        
+public void Push(GameObject gameObject){
+        if(gameObject.canPush){
+            int[] direction = new int[] {gameObject.position[0] - this.position[0], gameObject.position[1] - this.position[1]};
+
+            switch(direction){
+                case [1,0]:
+                Move(-1,0);
+                break;
+                case [-1,0]:
+                Move(1,0);
+                break;
+                case [0, 1]:
+                Move(0,-1);
+                break;
+                case [0, -1]:
+                Move(0, 1);
+                break;
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 using System.Globalization;
-
+/*
 class PushableObject : GameObject
 {
   
@@ -38,3 +38,4 @@ class PushableObject : GameObject
 
     
 }
+*/
