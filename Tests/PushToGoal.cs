@@ -15,11 +15,11 @@ public class PushToGoal
 
     public static void StartGame(){
         player.Summon();
-        
+        MapLoader.LoadMap(new TemplateMap(), Program.screen, objectList);
        // map1.LoadMap();
         
-        box.Summon();
-        pushBox.Summon();
+       // box.Summon();
+       // pushBox.Summon();
         GameLoop();
     }
 
