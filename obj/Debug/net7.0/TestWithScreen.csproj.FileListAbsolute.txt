@@ -13,3 +13,6 @@ E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\refint\TestWithScreen.dll
 E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.pdb
 E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.genruntimeconfig.cache
 E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\ref\TestWithScreen.dll
+E:\Proejcts\C#\TestWithScreen\bin\Debug\net7.0\ScreenLib.dll
+E:\Proejcts\C#\TestWithScreen\bin\Debug\net7.0\ScreenLib.pdb
+E:\Proejcts\C#\TestWithScreen\obj\Debug\net7.0\TestWithScreen.csproj.CopyComplete

@@ -1,4 +1,5 @@
-﻿
+﻿using ScreenLib;
+
 class Program
 {
     public static Screen screen = new Screen(30,30);
